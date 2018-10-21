@@ -39,6 +39,7 @@ public enum Locale {
     CMD_UNKNOWN("command.unknown", "{prefix} &7Unknown command! Type &e/trs help &7for a list of commands."),
     CMD_INVALID("command.invalid", "{prefix} &7Invalid usage, use &e/{args}&7."),
 
+    CMD_TR_BLANKMSG_INVALID("command.tr-blankmsg-invalid-player", "{prefix} Invalid player: &c{player}&7."),
     CMD_TR_RELOAD_COMPLETE("command.tr-reload-complete", "{prefix} &7TimedRewards was successfully reloaded (time taken: &e{time}&7ms)."),
     CMD_REWARDS_DISABLED("command.rewards-disabled", "{prefix} &7This command has been disabled."),
 

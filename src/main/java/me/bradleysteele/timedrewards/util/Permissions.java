@@ -27,6 +27,7 @@ public final class Permissions {
     private static final String ADMIN_PREFIX = PREFIX + ".admin";
 
     // Admin Commands
+    public static final String TR_BLANKMESSAGE = ADMIN_PREFIX + ".blankmessage";
     public static final String TR_RELOAD = ADMIN_PREFIX + ".reload";
 
 }

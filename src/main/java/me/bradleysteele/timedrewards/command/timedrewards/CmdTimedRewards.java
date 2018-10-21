@@ -31,9 +31,10 @@ public class CmdTimedRewards extends BCommand {
         this.setDescription("The main TimedRewards command.");
         this.setUsage("/timedrewards");
 
-        this.setAllowConsole(true);
-
-        this.setChildren(new CmdTimedRewardsReload());
+        this.setChildren(
+                new CmdTimedRewardsBlankMessage(),
+                new CmdTimedRewardsReload()
+        );
     }
 
     @Override
