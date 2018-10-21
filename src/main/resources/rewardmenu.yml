@@ -20,7 +20,7 @@ menu:
         lore:
         - '&7Your free daily Mystery Box.'
         - ''
-        - '&7Time until next claim: {claim_time}'
+        - '&7Time until next claim: {cooldown_digital}'
         - '&cClick to loot!'
       cooldown: 86400
       commands:
@@ -37,7 +37,7 @@ menu:
         - ' '
         - '&7Requires &aVIP'
         - ' '
-        - '&7Time until next claim: {claim_time}'
+        - '&7Time until next claim: {cooldown_digital}'
         - '&cClick to loot!'
       cooldown: 86400
       permission: timedrewards.vip
@@ -53,7 +53,7 @@ menu:
         - ' '
         - '&7Requires &aVIP&6+'
         - ' '
-        - '&7Time until next claim: {claim_time}'
+        - '&7Time until next claim: {cooldown_digital}'
         - '&cClick to loot!'
       cooldown: 86400
       permission: timedrewards.vipplus
@@ -69,7 +69,7 @@ menu:
         - ' '
         - '&7Requires &bMVP'
         - ' '
-        - '&7Time until next claim: {claim_time}'
+        - '&7Time until next claim: {cooldown_digital}'
         - '&cClick to loot!'
       cooldown: 86400
       permission: timedrewards.mvp
@@ -85,7 +85,7 @@ menu:
         - ' '
         - '&7Requires &bMVP&c+'
         - ' '
-        - '&7Time until next claim: {claim_time}'
+        - '&7Time until next claim: {cooldown_digital}'
         - '&cClick to loot!'
       cooldown: 86400
       permission: timedrewards.mvpplus
