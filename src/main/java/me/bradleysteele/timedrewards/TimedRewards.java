@@ -17,6 +17,9 @@
 package me.bradleysteele.timedrewards;
 
 import me.bradleysteele.commons.BPlugin;
+import me.bradleysteele.timedrewards.backend.StoreTRUserProfile;
+import me.bradleysteele.timedrewards.menu.WorkerRewardMenu;
+import me.bradleysteele.timedrewards.resource.Resources;
 
 /**
  * @author Bradley Steele
@@ -29,6 +32,12 @@ public class TimedRewards extends BPlugin {
         console.info("Purchase the premium version for multiple menus, NPCs, unclaimed an claimed items, vote rewards,"
                 + " in-game management and more. https://www.spigotmc.org/resources/46501/");
 
+        this.register(
+                Resources.class,
 
+                StoreTRUserProfile.class,
+
+                WorkerRewardMenu.class
+        );
     }
 }
