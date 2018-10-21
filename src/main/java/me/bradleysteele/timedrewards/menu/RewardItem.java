@@ -29,6 +29,8 @@ import java.util.regex.Pattern;
  */
 public class RewardItem {
 
+    public final static String NBT_KEY = "tr_reward_item_key";
+
     private final static Pattern PATTERN_DAYS = Pattern.compile("(?i)" + Pattern.quote("{days}"));
     private final static Pattern PATTERN_HOURS = Pattern.compile("(?i)" + Pattern.quote("{hours}"));
     private final static Pattern PATTERN_MINUTES = Pattern.compile("(?i)" + Pattern.quote("{minutes}"));
