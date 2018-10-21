@@ -68,7 +68,6 @@ public class WorkerRewardMenu extends BWorker {
 
     @Override
     public void onRegister() {
-
         ResourceSection section = Locale.getLocale().getSection("reward-cooldown.formats");
 
         if (section != null) {
@@ -185,7 +184,7 @@ public class WorkerRewardMenu extends BWorker {
 
         Player player = Players.getPlayer(profile.getUUID());
 
-        if (Config.MENU_CLOSE_ON_CLAIM.getAsBoolean() && player != null && isRewardMenu(player.getInventory())) {
+        if (Config.MENU_CLOSE_ON_CLAIM.getAsBoolean() && player != null && isRewardMenu(player.getOpenInventory().getTopInventory())) {
             player.closeInventory();
         }
 
@@ -201,8 +200,8 @@ public class WorkerRewardMenu extends BWorker {
 
             command = command.replaceAll("(?i)\\[PLAYER]", "")
                     .replaceAll("(?i)\\[CONSOLE]", "")
-                    .replaceAll("(?i)\\{(player|name)}", player.getName())
-                    .replaceAll("(?i)\\{uuid}", player.getUniqueId().toString())
+                    .replaceAll("(?i)\\{(player|name)}", profile.getName())
+                    .replaceAll("(?i)\\{uuid}", profile.getUUID().toString())
                     .trim();
 
             Bukkit.dispatchCommand(sender, command);
@@ -267,7 +266,6 @@ public class WorkerRewardMenu extends BWorker {
     public void closeViewer(Player player) {
         player.closeInventory();
     }
-
 
     // Getters
 
