@@ -43,9 +43,7 @@ public enum Locale {
 
     REWARD_NO_PERM("reward-no-permission", "{prefix} &7You do not have permission to claim that reward."),
     REWARD_ALREADY_CLAIMED("reward-already-claimed", "{prefix} &7You have already claimed this reward, come back later!"),
-    REWARD_VOTE_CLICK("reward-vote-click", "{prefix} &7Vote on one of our vote sites to be rewarded!"),
     REWARD_COOLDOWN_NOW("reward-cooldown.now", "&aNow"),
-    REWARD_COOLDOWN_ONE_TIME("reward-cooldown.one-time", "&cNever"),
 
     ;
 
