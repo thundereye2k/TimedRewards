@@ -58,6 +58,17 @@ public class RewardMenu {
     }
 
     /**
+     * @param key item key.
+     * @return the first reward item matching the provided key.
+     */
+    public RewardItem getRewardItem(String key) {
+        return getRewardItems().stream()
+                .filter(item -> item.getKey().equalsIgnoreCase(key))
+                .findFirst()
+                .orElse(null);
+    }
+
+    /**
      * @return unmodifiable set of the menu's {@link RewardItem}s.
      */
     public Set<RewardItem> getRewardItems() {
