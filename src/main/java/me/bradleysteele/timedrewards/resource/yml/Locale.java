@@ -39,6 +39,9 @@ public enum Locale {
     CMD_UNKNOWN("command.unknown", "{prefix} &7Unknown command! Type &e/trs help &7for a list of commands."),
     CMD_INVALID("command.invalid", "{prefix} &7Invalid usage, use &e/{args}&7."),
 
+    CMD_TR_RELOAD_COMPLETE("command.tr-reload-complete", "{prefix} &7TimedRewards was successfully reloaded (time taken: &e{time}&7ms)."),
+    CMD_REWARDS_DISABLED("command.rewards-disabled", "{prefix} &7This command has been disabled."),
+
     CONFIG_CHANGE_AVAILABLE("config-change-available", "{prefix} &7A config change is available. Current: &c{current} &7New: &a{new}&7."),
 
     REWARD_NO_PERM("reward-no-permission", "{prefix} &7You do not have permission to claim that reward."),
