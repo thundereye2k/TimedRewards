@@ -18,6 +18,8 @@ package me.bradleysteele.timedrewards;
 
 import me.bradleysteele.commons.BPlugin;
 import me.bradleysteele.timedrewards.backend.StoreTRUserProfile;
+import me.bradleysteele.timedrewards.command.CmdRewards;
+import me.bradleysteele.timedrewards.command.timedrewards.CmdTimedRewards;
 import me.bradleysteele.timedrewards.menu.WorkerRewardMenu;
 import me.bradleysteele.timedrewards.resource.Resources;
 
@@ -37,7 +39,10 @@ public class TimedRewards extends BPlugin {
 
                 StoreTRUserProfile.class,
 
-                WorkerRewardMenu.class
+                WorkerRewardMenu.class,
+
+                CmdRewards.class,
+                CmdTimedRewards.class
         );
     }
 }
