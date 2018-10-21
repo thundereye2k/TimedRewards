@@ -104,7 +104,7 @@ public class TRUserProfile {
         claimTimes.put(key, claimTime);
     }
 
-    public void setClaimTimes(RewardItem item, long claimTime) {
+    public void setClaimTime(RewardItem item, long claimTime) {
         setClaimTime(item.getKey(), claimTime);
     }
 }
