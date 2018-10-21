@@ -34,7 +34,12 @@ public class StoreTRUserProfile extends BStore<TRUserProfile> {
         return instance;
     }
 
-    private Backend backend = new BackendYML();
+    private Backend backend;
+
+    @Override
+    public void onRegister() {
+        setBackend(new BackendYML());
+    }
 
     public TRUserProfile retrieve(UUID uuid) {
         TRUserProfile profile;
@@ -68,5 +73,7 @@ public class StoreTRUserProfile extends BStore<TRUserProfile> {
      */
     public void setBackend(Backend backend) {
         this.backend = backend;
+
+        plugin.register(backend);
     }
 }
