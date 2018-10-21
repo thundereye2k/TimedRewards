@@ -16,6 +16,9 @@ command:
   unknown: '{prefix} &7Unknown command! Type &e/trs help &7for a list of commands.'
   invalid: '{prefix} &7Invalid usage, use &e/{args}&7.'
 
+  # /tr blankmessage
+  tr-blankmsg-invalid-player: '{prefix} Invalid player: &c{player}&7.'
+
   # /tr reload
   tr-reload-complete: '{prefix} &7TimedRewards was successfully reloaded (time taken: &e{time}&7ms).'
 
