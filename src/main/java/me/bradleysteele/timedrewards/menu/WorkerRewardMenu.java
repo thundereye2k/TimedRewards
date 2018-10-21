@@ -182,6 +182,10 @@ public class WorkerRewardMenu extends BWorker {
 
         Player player = Players.getPlayer(profile.getUUID());
 
+        if (Config.MENU_CLOSE_ON_CLAIM.getAsBoolean() && player != null && isRewardMenu(player.getInventory())) {
+            player.closeInventory();
+        }
+
         // Run commands
         CommandSender sender;
 
