@@ -18,6 +18,7 @@ package me.bradleysteele.timedrewards.menu;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import me.bradleysteele.commons.itemstack.ItemStacks;
 import me.bradleysteele.commons.register.worker.BWorker;
 import me.bradleysteele.commons.resource.ResourceSection;
@@ -31,11 +32,15 @@ import me.bradleysteele.timedrewards.resource.Resources;
 import me.bradleysteele.timedrewards.resource.yml.Config;
 import me.bradleysteele.timedrewards.resource.yml.Locale;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -59,7 +64,9 @@ public class WorkerRewardMenu extends BWorker {
     }
 
     private RewardMenu rewardMenu;
+
     private final Map<String, String> cooldownFormats = Maps.newHashMap();
+    private final Set<String> npcs = Sets.newHashSet();
 
     private WorkerRewardMenu() {
         this.setPeriod(2L);
@@ -73,6 +80,10 @@ public class WorkerRewardMenu extends BWorker {
         if (section != null) {
             section.getKeys().forEach(key -> cooldownFormats.put(Pattern.quote("{" + key + "}"), section.getString(key)));
         }
+
+        npcs.addAll(Config.MENU_NPCS.getAsStringList().stream()
+                .map(s -> ChatColor.stripColor(Messages.colour(s.toLowerCase())))
+                .collect(Collectors.toSet()));
 
         long start = System.currentTimeMillis();
         rewardMenu = loadRewardMenu();
@@ -105,6 +116,32 @@ public class WorkerRewardMenu extends BWorker {
             if (current < latest) {
                 Players.sendMessage(player, Locale.CONFIG_CHANGE_AVAILABLE.getMessage("{current}", current, "{new}", latest));
             }
+        }
+    }
+
+    @EventHandler
+    public void onPlayerPunchEntity(EntityDamageByEntityEvent event) {
+        if (event.isCancelled()) {
+            return;
+        }
+
+        if (event.getDamager() instanceof Player) {
+            handleInteract((Player) event.getDamager(), event.getEntity());
+        }
+    }
+
+    @EventHandler
+    public void onPlayerInteractEntity(PlayerInteractEntityEvent event) {
+        if (event.isCancelled()) {
+            return;
+        }
+
+        handleInteract(event.getPlayer(), event.getRightClicked());
+    }
+
+    private void handleInteract(Player player, Entity entity) {
+        if (isExternalNPC(entity)) {
+            player.openInventory(new InvRewards(rewardMenu).getInventory());
         }
     }
 
@@ -314,5 +351,9 @@ public class WorkerRewardMenu extends BWorker {
     public void setRewardMenu(RewardMenu menu) {
         getViewingPlayers(menu).forEach(HumanEntity::closeInventory);
         this.rewardMenu = menu;
+    }
+
+    private boolean isExternalNPC(Entity entity) {
+        return entity.getCustomName() != null && npcs.contains(ChatColor.stripColor(entity.getCustomName()).toLowerCase());
     }
 }
