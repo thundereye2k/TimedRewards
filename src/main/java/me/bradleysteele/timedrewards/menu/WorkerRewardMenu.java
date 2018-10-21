@@ -115,7 +115,8 @@ public class WorkerRewardMenu extends BWorker {
      */
     public synchronized RewardMenu loadRewardMenu() {
         ResourceSection menuSection = Resources.get().getResource(ResourceType.REWARD_MENU).getSection("menu");
-        ResourceSection itemsSection = menuSection.getSection("items");
+        ResourceSection rewardsSection = menuSection.getSection("items");
+        ResourceSection rewardSection;
         ResourceSection itemSection;
 
         RewardMenu menu = new RewardMenu("default");
@@ -125,22 +126,24 @@ public class WorkerRewardMenu extends BWorker {
         RewardItem item;
 
         // Iterate through each item.
-        for (String key : itemsSection.getKeys()) {
-            itemSection = itemsSection.getSection(key);
+        for (String key : rewardsSection.getKeys()) {
+            rewardSection = rewardsSection.getSection(key);
 
-            item = new RewardItem(key, itemSection.getString("permission"), itemSection.getLong("cooldown") * 1000);
-            item.setSlot(itemSection.getInt("slot"));
+            item = new RewardItem(key, rewardSection.getString("permission"), rewardSection.getLong("cooldown") * 1000);
+            item.setSlot(rewardSection.getInt("slot"));
 
-            if (!itemSection.contains("item")) {
+            if (!rewardSection.contains("item")) {
                 plugin.getConsole().error("Failed to load unclaimed item &c" + key + "&r: missing unclaimed section.");
                 continue;
             }
+
+            itemSection = rewardSection.getSection("item");
 
             // Safe build item
             Material material = Material.matchMaterial(itemSection.getString("material", "AIR"));
 
             if (material == Material.AIR) {
-                plugin.getConsole().error("Failed to load unclaimed item &c" + key + "&r: invalid material.");
+                plugin.getConsole().error("Failed to load item &c" + key + "&r: invalid material.");
                 continue;
             }
 
@@ -155,7 +158,7 @@ public class WorkerRewardMenu extends BWorker {
                     .build());
 
             // Commands
-            item.setCommands(itemSection.getStringList("commands"));
+            item.setCommands(rewardSection.getStringList("commands"));
 
             menu.addRewardItem(item);
         }

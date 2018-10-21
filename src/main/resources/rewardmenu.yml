@@ -75,7 +75,7 @@ menu:
       permission: timedrewards.mvp
     reward5:
       slot: 24
-      unclaimed:
+      item:
         amount: 1
         material: ENDER_CHEST
         damage: 0
