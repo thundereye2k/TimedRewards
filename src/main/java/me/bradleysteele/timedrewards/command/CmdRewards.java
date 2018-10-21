@@ -36,7 +36,7 @@ public class CmdRewards extends BCommand {
         return instance;
     }
 
-    public CmdRewards() {
+    private CmdRewards() {
         this.setAliases("rewards");
         Config.REWARDS_ALIASES.getAsStringList().forEach(this::addAlias);
 
