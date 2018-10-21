@@ -1,0 +1,91 @@
+# Timed Rewards by Bradley Steele (Ibiza).
+#
+# /Contact
+# Spigot: https://www.spigotmc.org/members/292138/
+# Discord: Bradley#4169
+# Discord Support Server: https://redirect.bradleysteele.me/bps
+
+
+menu:
+  title: 'Rewards Menu'
+  size: 45
+  items:
+    reward1:
+      slot: 20
+      item:
+        amount: 1
+        material: ENDER_CHEST
+        damage: 0
+        name: '&aMystery Box Delivery'
+        lore:
+        - '&7Your free daily Mystery Box.'
+        - ''
+        - '&7Time until next claim: {claim_time}'
+        - '&cClick to loot!'
+      cooldown: 86400
+      commands:
+      - '[CONSOLE]timedrewards blankmsg {player} &7[&6TimedRewards&7] &7Thanks for claiming the &edaily &7reward! Come back tomorrow for another.'
+    reward2:
+      slot: 21
+      item:
+        amount: 1
+        material: ENDER_CHEST
+        damage: 0
+        name: '&aMystery Box Delivery'
+        lore:
+        - '&7Your free daily Mystery Box.'
+        - ' '
+        - '&7Requires &aVIP'
+        - ' '
+        - '&7Time until next claim: {claim_time}'
+        - '&cClick to loot!'
+      cooldown: 86400
+      permission: timedrewards.vip
+    reward3:
+      slot: 22
+      item:
+        amount: 1
+        material: ENDER_CHEST
+        damage: 0
+        name: '&aMystery Box Delivery'
+        lore:
+        - '&7Your free daily Mystery Box.'
+        - ' '
+        - '&7Requires &aVIP&6+'
+        - ' '
+        - '&7Time until next claim: {claim_time}'
+        - '&cClick to loot!'
+      cooldown: 86400
+      permission: timedrewards.vipplus
+    reward4:
+      slot: 23
+      item:
+        amount: 1
+        material: ENDER_CHEST
+        damage: 0
+        name: '&aMystery Box Delivery'
+        lore:
+        - '&7Your free daily Mystery Box.'
+        - ' '
+        - '&7Requires &bMVP'
+        - ' '
+        - '&7Time until next claim: {claim_time}'
+        - '&cClick to loot!'
+      cooldown: 86400
+      permission: timedrewards.mvp
+    reward5:
+      slot: 24
+      unclaimed:
+        amount: 1
+        material: ENDER_CHEST
+        damage: 0
+        name: '&aMystery Box Delivery'
+        lore:
+        - '&7Your free daily Mystery Box.'
+        - ' '
+        - '&7Requires &bMVP&c+'
+        - ' '
+        - '&7Time until next claim: {claim_time}'
+        - '&cClick to loot!'
+      cooldown: 86400
+      permission: timedrewards.mvpplus
